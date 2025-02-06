@@ -8,13 +8,48 @@ namespace PROG2070_A2_Group_10
 {
 	public class Product
 	{
-		public int ProdID { get; set; }
-		public string ProdName { get; set; }
-		public float ItemPrice { get; set; }
-		public int StockAmount { get; set; }
+		private int _ProdID;
+		private float _ItemPrice;
+		private int _StockAmount;
 
-		public Product(int ProdID, string ProdName, float ItemPrice, int StockAmount)
+		public int ProdID
 		{
+			get => _ProdID;
+			set
+			{
+				if (value >= 5 && value <= 50000)
+				{
+					_ProdID = value;
+				}
+			}
+		}
+		public string ProdName { get; set; }
+		public float ItemPrice
+		{
+			get => _ItemPrice;
+			set
+			{
+				if (value >= 5 && value <= 5000)
+				{
+					_ItemPrice = value;
+				}
+			}
+		}
+		public int StockAmount
+		{
+			get => _StockAmount;
+			set
+			{
+				if (value >= 5 && value <= 500000)
+				{
+					_StockAmount = value;
+				}
+			}
+		}
+
+		public Product(int ProdID = 5, string ProdName = "", float ItemPrice = 5, int StockAmount = 5)
+		{
+
 			this.ProdID = ProdID;
 			this.ProdName = ProdName;
 			this.ItemPrice = ItemPrice;
