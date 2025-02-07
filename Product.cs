@@ -44,10 +44,7 @@ namespace PROG2070_A2_Group_10
                 {
                     _StockAmount = value;
                 }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value), "StockAmount must be between 5 and 500000.");
-                }
+               
             }
         }
 
