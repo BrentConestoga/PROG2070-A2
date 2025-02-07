@@ -21,6 +21,14 @@ namespace PROG2070_A2_Group_10
 				{
 					_ProdID = value;
 				}
+				else if (value < 5)
+				{
+					_ProdID = 5;
+				}
+				else if(value > 50000)
+				{
+					_ProdID = 50000;
+				}
 			}
 		}
 		public string ProdName { get; set; }
@@ -33,6 +41,14 @@ namespace PROG2070_A2_Group_10
 				{
 					_ItemPrice = value;
 				}
+				else if (value < 5)
+				{
+					_ItemPrice = 5;
+				}
+				else if (value > 5000)
+				{
+					_ItemPrice = 5000;
+				}
 			}
 		}
 		public int StockAmount
@@ -43,6 +59,14 @@ namespace PROG2070_A2_Group_10
 				if (value >= 5 && value <= 500000)
 				{
 					_StockAmount = value;
+				}
+				else if (value < 5)
+				{
+					_StockAmount = 5;
+				}
+				else if (value > 500000)
+				{
+					_StockAmount = 500000;
 				}
 			}
 		}
