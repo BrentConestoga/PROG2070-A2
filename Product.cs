@@ -11,10 +11,10 @@ namespace PROG2070_A2_Group_10
 		private int _ProdID;
 		private float _ItemPrice;
 		private int _StockAmount;
-        public string ProdName { get; set; }
-        public int ProdID
+
+		public int ProdID
 		{
-			get => _ProdID;
+			get { return _ProdID; }
 			set
 			{
 				if (value >= 5 && value <= 50000)
@@ -23,10 +23,10 @@ namespace PROG2070_A2_Group_10
 				}
 			}
 		}
-		
+		public string ProdName { get; set; }
 		public float ItemPrice
 		{
-			get => _ItemPrice;
+			get { return _ItemPrice; }
 			set
 			{
 				if (value >= 5 && value <= 5000)
@@ -35,20 +35,19 @@ namespace PROG2070_A2_Group_10
 				}
 			}
 		}
-        public int StockAmount
-        {
-            get => _StockAmount;
-            set
-            {
-                if (value >= 5 && value <= 500000)
-                {
-                    _StockAmount = value;
-                }
-               
-            }
-        }
+		public int StockAmount
+		{
+			get { return _StockAmount; }
+			set
+			{
+				if (value >= 5 && value <= 500000)
+				{
+					_StockAmount = value;
+				}
+			}
+		}
 
-        public Product(int ProdID = 5, string ProdName = "", float ItemPrice = 5, int StockAmount = 5)
+		public Product(int ProdID = 5, string ProdName = "", float ItemPrice = 5, int StockAmount = 5)
 		{
 
 			this.ProdID = ProdID;
@@ -57,28 +56,29 @@ namespace PROG2070_A2_Group_10
 			this.StockAmount = StockAmount;
 		}
 
-        public void IncreaseStock(int amount)
-        {
-           
+		public void IncreaseStock(int amount)
+		{
+			if (amount < 0 || StockAmount + amount > 500000)
+			{
+				return;
+			}
+			StockAmount += amount;
+		}
 
-            this.StockAmount += amount;
-        }
-
-        public void DecreaseStock(int amount)
-        {
-            if (amount < 0)
-            {
-                return;
-            }
-            if (StockAmount - amount < 5)
-            {
-                StockAmount = 5;
-            }
-            else
-            {
-                StockAmount -= amount;
-            }
-        }
-
-    }
+		public void DecreaseStock(int amount)
+		{
+			if (amount < 0)
+			{
+				return;
+			}
+			if (StockAmount - amount < 5)
+			{
+				StockAmount = 5;
+			}
+			else
+			{
+				StockAmount -= amount;
+			}
+		}
+	}
 }
