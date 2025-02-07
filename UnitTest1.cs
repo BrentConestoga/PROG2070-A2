@@ -4,7 +4,7 @@ using PROG2070_A2_Group_10;
 [TestFixture]
 public class ProductTests
 {
-    // 3 Tests for ProdID (using different values)
+    //Setting and testing ProdID
     [TestCase(5)]
     [TestCase(10000)]
     [TestCase(50000)]
@@ -15,7 +15,7 @@ public class ProductTests
         Assert.That(product.ProdID, Is.EqualTo(id));
     }
 
-    // 3 Tests for ItemPrice (using different values)
+    //Setting and testing ItemPrice
     [TestCase(5.0f)]
     [TestCase(999.99f)]
     [TestCase(5000.0f)]
@@ -26,7 +26,7 @@ public class ProductTests
         Assert.That(product.ItemPrice, Is.EqualTo(price));
     }
 
-    // 3 Tests for StockAmount (using different values)
+    //Setting and testing StockAmount
     [TestCase(5)]
     [TestCase(1000)]
     [TestCase(500000)]
@@ -37,7 +37,7 @@ public class ProductTests
         Assert.That(product.StockAmount, Is.EqualTo(stock));
     }
 
-    // 3 Tests for IncreaseStock method (testing stock increase)
+    //Testing IncreaseStock method.
     [TestCase(50)]
     [TestCase(100)]
     [TestCase(200)]
@@ -49,7 +49,7 @@ public class ProductTests
         Assert.That(product.StockAmount, Is.EqualTo(initialStock + amount));
     }
 
-    // 3 Tests for DecreaseStock method (testing stock decrease)
+    //Testing DecreaseStock method for values less than initial stock
     [TestCase(30)]
     [TestCase(20)]
     [TestCase(10)]
@@ -61,17 +61,17 @@ public class ProductTests
         Assert.That(product.StockAmount, Is.EqualTo(initialStock - amount));
     }
 
-    // 2 Tests for DecreaseStock when trying to decrease more than available stock
-    [TestCase(1500)] // Try to decrease more stock than available
-    [TestCase(2000)] // Try to decrease more stock than available
+    //Testing DecreaseStock method for values greater than initial stock
+    [TestCase(1500)]
+    [TestCase(2000)]
     public void Test_StockDecrease_NotNegative(int amount)
     {
         var product = new Product(10, "Laptop", 1000.0f,50);
         product.DecreaseStock(amount);
-        Assert.That(product.StockAmount, Is.EqualTo(5));  // Verifies stock is set to 0 and doesn't go below 0
+        Assert.That(product.StockAmount, Is.EqualTo(5));
     }
 
-    // 2 Tests for checking price boundaries (test price limits)
+    //Testing the max and min of ItemPrice
     [TestCase(5.0f)]
     [TestCase(5000.0f)]
     public void Test_ItemPrice_LimitValues(float price)
@@ -81,7 +81,7 @@ public class ProductTests
         Assert.That(product.ItemPrice, Is.EqualTo(price));
     }
 
-    // 2 Tests for checking ProdID boundaries (test ProdID limits)
+    //Testing the max and min of ProdID
     [TestCase(5)]
     [TestCase(50000)]
     public void Test_ProdID_LimitValues(int prodID)
@@ -91,7 +91,7 @@ public class ProductTests
         Assert.That(product.ProdID, Is.EqualTo(prodID));
     }
 
-    // 2 Tests for checking StockAmount boundaries (test StockAmount limits)
+    //Testing the max and min of StockAmount
     [TestCase(5)]
     [TestCase(500000)]
     public void Test_StockAmount_LimitValues(int stock)
